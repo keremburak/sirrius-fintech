@@ -1,0 +1,137 @@
+﻿@using sirrius.WebUI.Models
+
+@model NavigationMenu
+
+@{
+    var pageName = ViewData["PageName"]?.ToString().ToLower();
+}
+
+@foreach (var group in Model.MenuItems)
+{
+    @if (group.Items.Any())
+    {
+        var groups = group.Items.Select(x => x.Href.ToPage()).Where(x => !x.IsVoid()).ToList();
+
+        group.Items.ForEach(item =>
+        {
+            var result = item.Items?.Select(x => x.Href.ToPage()).Where(x => !x.IsVoid()).ToList();
+            if (result?.Any() == true)
+            {
+                groups = groups.Concat(result).ToList();
+            }
+        });
+        <li class="nav-item @(groups.Contains(pageName) ? "menu-open" : "")">
+            <a href="#" class="nav-link @(groups.Contains(pageName) ? "active" : "")" title="@group.Title">
+                <i class="fas fa-circle nav-icon @group.Icon"></i>
+                <p data-i18n="@group.I18n">
+                    @group.Text.AsRaw()
+                    @if (group.Items.Count > 0)
+                    {
+                        <text>
+                            <i class="right fas fa-angle-left"></i>
+                        </text>
+                    }
+                </p>
+            </a>
+
+
+            <ul class="nav nav-treeview">
+                @{
+                    foreach (var item in group.Items)
+                    {
+                        var items = item.Items?.Select(x => x.Href.ToPage()).Where(x => !x.IsVoid()).ToList();
+
+                        if (item.Disabled)
+                        {
+                            <text>
+                                <li class="disabled">
+                            </text>
+                        }
+                        else
+                        {
+                            if (items?.Any() == true)
+                            {
+                                <text>
+                                <li class="nav-item @(items.Contains(pageName) || item.IsRelatedTo(pageName) ? "menu-open" : "")">
+
+                                    <a href="@item.Route" class="nav-link @(items.Contains(pageName) || item.IsRelatedTo(pageName) ? "active" : "")" style="margin-left:15px" title="@item.Title" target="@item.Target">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p data-i18n="@item.I18n">
+                                            @item.Text.AsRaw()
+                                        </p>
+                                    </a>
+                                </text>
+                            }
+                            else
+                            {
+                                <text>
+                                <li class="nav-item">
+                                    <a href="@item.Route" class="nav-link @(pageName == item.Href.ToPage()   ? "active" : "")" style="margin-left:15px" title="@item.Title" target="@item.Target">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p data-i18n="@item.I18n">
+                                            @item.Text.AsRaw()
+                                        </p>
+                                    </a>
+                                </text>
+                            }
+                        }
+                        <text>
+
+
+
+                        </text>
+                        if (item.Items?.Any() == true)
+                        {
+                            <text>
+                                <ul class="nav nav-treeview">
+                                    @foreach (var subItem in item.Items)
+                                    {
+                                        if (subItem.Disabled)
+                                        {
+                                            <text>
+                                            <li class="disabled">
+                            </text>
+                        }
+                        else
+                        {
+                            <text>
+                            <li class="nav-item">
+                            </text>
+                        }
+
+                        <a href="@subItem.Route" class="nav-link @(pageName == subItem.Href.ToPage() ? "active" : "")" title="@subItem.Title" target="@subItem.Target">
+                            <i class="far fa-dot-circle nav-icon"></i>
+                            <p data-i18n="@subItem.I18n">
+                                @subItem.Text.AsRaw()
+                            </p>
+                        </a>
+                    @:</li>
+                }
+                                </ul>
+                                </text>
+                            }
+                        @:</li>
+                    }
+                }
+            </ul>
+        </li>
+    }
+    else
+    {
+        if (group.Type == ItemType.Category)
+        {
+            <li class="nav-title">@group.Title</li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a href="@group.Route" class="nav-link @(pageName == group.Href.ToPage() ? "active" : "")" title="@group.Title" target="@group.Target">
+                    <i class="nav-icon @group.Icon"></i>
+                    <p data-i18n="@group.I18n">
+                        @group.Text.AsRaw()
+                    </p>
+                </a>
+            </li>
+        }
+    }
+}

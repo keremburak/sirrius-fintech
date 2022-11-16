@@ -1,0 +1,84 @@
+﻿{
+  "version": "4.5",
+  "menuItems": [
+    {
+      "title": "Dashboard",
+      "href": "/home/dashboard",
+      "icon": "fa fa-tachometer-alt",
+      "roles": [ "Admin", "User" ]
+    },
+    {
+      "title": "Dashboard Detay",
+      "href": "/home/dashboarddetail",
+      "icon": "fas fa-bars",
+      "roles": [ "Admin", "User" ]
+    },
+    {
+      "title": "Tanımlamalar",
+      "icon": "fas fa-pencil-alt",
+      "roles": [ "SuperAdmin", "Admin" ],
+      "items": [
+        {
+          "title": "Kullanıcılar",
+          "href": "/user/index",
+          "roles": [ "SuperAdmin", "Admin" ]
+        },
+        {
+          "title": "Musteriler",
+          "href": "/customer/index",
+          "roles": [ "SuperAdmin" ]
+        },
+        {
+          "title": "Firmalar",
+          "href": "/company/index",
+          "roles": [ "SuperAdmin", "Admin" ]
+        },
+        {
+          "title": "Hesaplar",
+          "href": "/companybankaccount/index",
+          "roles": [ "SuperAdmin", "Admin" ]
+        },
+        {
+          "title": "Bankalar",
+          "href": "/bank/index",
+          "roles": [ "SuperAdmin", "Admin" ]
+        },
+        {
+          "title": "Banka İşlem Kodları",
+          "href": "/bankoperationcode/index",
+          "roles": [ "SuperAdmin", "Admin" ]
+        },
+        {
+          "title": "FTP Bağlantıları",
+          "href": "/ftpconnection/index",
+          "roles": [ "SuperAdmin", "Admin" ]
+        },
+        {
+          "title": "Cari Hesap",
+          "href": "/mycustomerftpmatching/index",
+          "roles": [ "SuperAdmin", "Admin", "User" ]
+        },
+        {
+          "title": "Ülkeler",
+          "href": "/country/index",
+          "roles": [ "SuperAdmin", "Admin", "User" ]
+        },
+        {
+          "title": "Şehirler",
+          "href": "/city/index",
+          "roles": [ "SuperAdmin", "Admin", "User" ]
+        },
+        {
+          "title": "Para Birimleri",
+          "href": "/currency/index",
+          "roles": [ "SuperAdmin", "Admin", "User" ]
+        },
+        {
+          "title": "Kategoriler",
+          "href": "/category/index",
+          "roles": [ "SuperAdmin", "Admin" ]
+        }
+      ]
+    }
+  ]
+}

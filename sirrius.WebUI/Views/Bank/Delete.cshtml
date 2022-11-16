@@ -1,0 +1,55 @@
+﻿@model sirrius.Data.Entity.Bank
+
+@{
+    ViewData["Title"] = "Banka Silme";
+    ViewData["PageName"] = "/bank/index";
+}
+
+@Html.Hidden("id", Model.Id)
+
+<h1><a class="btn btn-sm btn-primary fs-lg" asp-action="Index"><i class="fa fa-backspace"></i> Geri</a></h1>
+<div class="row">
+    <div class="offset-md-2 col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="card-title text-uppercase">Banka Detayı</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="text-danger">Silmek istiyor musunuz?</h1>
+                <hr />
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <table class="table table-borderless">
+                            <tr>
+                                <td class="col-md-3 font-weight-bold">Banka Kodu</td>
+                                <td id="code"> @Model.Code</td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-3 font-weight-bold">Banka Adı</td>
+                                <td id="name"> @Model.Name</td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-3 font-weight-bold">Ülke Adı</td>
+                                <td id="name"> @Model.Country.Name</td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-3 font-weight-bold">Açıklama</td>
+                                <td id="description"> @Model.Description</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                        <button class="btn btn-danger rounded-plus" type="button">Sil</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="circleloader"></div>
+
+@section pagescripts {
+    <script src="~/scripts/pages/bank/delete.js"></script>
+}

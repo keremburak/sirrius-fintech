@@ -1,0 +1,46 @@
+﻿@model sirrius.Data.Entity.Category
+
+@{ ViewData["Title"] = "Kayıt Guncelleme";
+                ViewData["PageName"] = "/category/index"; }
+
+@Html.Hidden("id", Model.Id)
+
+<h1><a class="btn btn-sm btn-primary fs-lg" asp-action="Index"><i class="fa fa-backspace"></i> Geri</a></h1>
+<div class="row">
+    <div class="offset-md-2 col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="card-title text-uppercase">Kayıt Guncelleme</h4>
+            </div>
+            <div class="card-body">
+                <form id="edit-category-form" novalidate action="@Url.Action("Edit","Category")">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-xs-12">
+                            <div class="form-group pl-2">
+                                <label for="name">Kategori Adı</label>
+                                <input type="text" id="name" placeholder="Kategori Adı" class="form-control" aria-describedby="inputGroupPrepend" value="@Model.Name" required />
+                                <div class="invalid-feedback">
+                                    Kategori adıni girin
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:15px">
+                        <div class="col-sm-12 col-md-12 col-xs-12">
+                            <div class="text-center">
+                                <button class="btn btn-primary rounded-plus" type="submit">Kaydet</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="circleloader"></div>
+@section pagescripts {
+    <script src="~/scripts/pages/category/edit.js"></script>
+}

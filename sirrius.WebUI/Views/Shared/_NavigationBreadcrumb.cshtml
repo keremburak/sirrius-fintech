@@ -1,0 +1,15 @@
+﻿<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">SirriUS CRM</a></li>
+    @if (ViewBag.Category1?.Length > 0)
+    {
+        <li class="breadcrumb-item">@ViewBag.Category1</li>
+    }
+    @if (ViewBag.Category2?.Length > 0)
+    {
+        <li class="breadcrumb-item">@ViewBag.Category2</li>
+    }
+    <li class="breadcrumb-item active">@ViewBag.Title</li>
+    @*<li class="position-absolute pos-top pos-right d-none d-sm-block"></li>*@
+    @*<li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item active">Starter Page</li>*@
+</ol>

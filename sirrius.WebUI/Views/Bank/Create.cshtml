@@ -1,0 +1,82 @@
+﻿@model sirrius.Model.DataModel.MultiSelectModel<sirrius.Data.Entity.Bank, string>
+@{
+    ViewData["Title"] = "Yeni Kayıt";
+    ViewData["PageName"] = "/bank/index";
+}
+
+@section Header {
+    <link rel="stylesheet" href="~/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="~/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+}
+
+<h1><a class="btn btn-sm btn-primary fs-lg" asp-action="Index"><i class="fa fa-backspace"></i> Geri</a></h1>
+<div class="row">
+    <div class="offset-md-2 col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="card-title text-uppercase">Yeni Kayıt</h4>
+            </div>
+            <div class="card-body">
+                <form id="create-bank-form" novalidate>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="code">
+                                    Banka Kodu
+                                </label>
+                                <input type="text" id="code" placeholder="Banka Kodu" class="form-control" aria-describedby="inputGroupPrepend" required />
+                                <div class="invalid-feedback">
+                                    Banka kodunu girin
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-xs-12 pt-0">
+                            <div class="form-group">
+                                <label for="name">Banka Adı</label>
+                                <input type="text" id="name" placeholder="Banka Adı" class="form-control" aria-describedby="inputGroupPrepend" required />
+                                <div class="invalid-feedback">
+                                    Banka adını girin
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-xs-12 pt-0">
+                            <div class="form-group">
+                                <label class="form-label" for="countries">Ülke</label>
+                                <select asp-for="SelectedIds[0]" asp-items="@(new SelectList(ViewBag.Countries,"Value","Text"))" class="form-control select2bs4" id="countries" required>
+                                    <option value="">Ülke Seçin</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Ülke seçin
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-xs-12 pt-0">
+                            <div class="form-group">
+                                <label for="description">Açıklama</label>
+                                <textarea type="text" id="description" placeholder="Açıklama" style="resize:none;word-wrap:break-word;" rows="5" class="form-control" aria-describedby="inputGroupPrepend" required></textarea>
+                                <div class="invalid-feedback">
+                                    Banka için açıklama girin
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:15px">
+                        <div class="col-sm-12 col-md-12 col-xs-12">
+                            <div class="text-center">
+                                <button class="btn btn-primary rounded-plus" type="submit">Kaydet</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="circleloader"></div>
+@section pagescripts {
+    <script src="~/plugins/select2/js/select2.full.min.js"></script>
+    <script src="~/plugins/select2/js/i18n/tr.js"></script>
+    <script src="~/scripts/pages/bank/create.js"></script>
+}

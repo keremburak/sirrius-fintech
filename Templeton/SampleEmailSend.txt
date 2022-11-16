@@ -1,0 +1,25 @@
+﻿Asagida mail gondermeyi saglayan ornek kod satirlari mevcuttur.
+
+//standart e-posta gonderim ornegi
+//
+var htmlFile = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Template", "test.html");
+
+StreamReader sr = new StreamReader(htmlFile);
+string body = sr.ReadToEnd();
+
+var message = new MailMessage(new string[] { "kerem.burax@gmail.com", "k.cengizbm@gmail.com" }, "Test mail with Attachments", body);
+await emailService.SendEmailAsync(message);
+
+================================================================================
+
+//dosya ekleme yapilmis e-posta ornegi
+//
+var files = Request.Form == null ? new FormFileCollection() : (Request.Form.Files.Any() ? Request.Form.Files : new FormFileCollection());
+var htmlFile = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Template", "test.html");
+
+StreamReader sr = new StreamReader(htmlFile);
+string body = sr.ReadToEnd();
+
+var message = new MailMessage(new string[] { "kerem.burax@gmail.com", "k.cengizbm@gmail.com" }, "Test mail with Attachments", body);
+await emailService.SendEmailAsync(message);
+

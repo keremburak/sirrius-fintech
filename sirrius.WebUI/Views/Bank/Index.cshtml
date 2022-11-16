@@ -1,0 +1,95 @@
+﻿@{
+    ViewData["Title"] = "Bankalar";
+    ViewData["PageName"] = "/bank/index";
+    //ViewData["Category1"] = "Bankalar";
+}
+
+@section Header {
+    <link rel="stylesheet" media="screen, print" href="~/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    @*<link rel="stylesheet" media="screen, print" href="~/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">*@
+    <link rel="stylesheet" href="~/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+}
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title" style="color:red"> Bankalar</h2>
+
+                <div class="card-tools">
+                    @*<button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <i class="fas fa-minus"></i>
+        </button>
+        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+            <i class="fas fa-times"></i>
+        </button>*@
+                    <button type="button" style="margin-right:10px;" class="btn btn btn-dark btn-sm" data-toggle="modal" data-target=".example-modal-default-transparent">Yeni Eslestirme</button>
+                    <a href="@Url.Action("Create","Bank")" class="btn btn-primary btn-sm">Yeni Kayıt</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <table id="banks" class="table table-bordered table-hover table-striped w-100">
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+</div>
+
+@* Eşleştirme Popup Ekranı*@
+
+<div class="modal fade example-modal-default-transparent" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="height:650px">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Yeni Eslestirme
+                    <small class="m-0 opacity-70">
+                        Yeni Kayit Eslestirme
+                    </small>
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+                        <label class="form-label" for="fl_current_codes">Cari Hesap Kodu</label>
+                        <select class="form-control select2" id="fl_current_codes">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+                        <label class="form-label" for="fl_accounting_codes">Muhasebe Kodu</label>
+                        <select class="form-control select2" id="fl_accounting_codes">
+                        </select>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                <button type="button" class="btn btn-primary">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="circleloader"></div>
+
+@section pagescripts{
+    <script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    @*<script src="~/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>*@
+    <script src="~/js/gridhelper.js"></script>
+
+    <script src="~/plugins/select2/select2.bundle.js"></script>
+    <script src="~/plugins/select2/i18n/tr.js"></script>
+
+    <script src="~/scripts/pages/bank/index.js"></script>
+}
+

@@ -1,0 +1,43 @@
+﻿@model sirrius.Data.Entity.Category
+
+@{ ViewData["Title"] = "Kategori Silme";
+    ViewData["PageName"] = "/category/index"; }
+
+@Html.Hidden("id", Model.Id)
+
+<h1><a class="btn btn-sm btn-primary fs-lg" asp-action="Index"><i class="fa fa-backspace"></i> Geri</a></h1>
+<div class="row">
+    <div class="offset-md-2 col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="card-title text-uppercase">Kategori Detayı</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="text-danger">Silmek istiyor musunuz?</h1>
+                <hr />
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <table class="table table-borderless">
+
+                            <tr>
+                                <td class="col-md-3 font-weight-bold">Kategori Adı</td>
+                                <td id="name"> @Model.Name</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                        <button class="btn btn-danger rounded-plus" type="button">Sil</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="circleloader"></div>
+
+@section pagescripts {
+    <script src="~/scripts/pages/category/delete.js"></script>
+}

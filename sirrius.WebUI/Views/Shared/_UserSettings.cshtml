@@ -1,0 +1,29 @@
+﻿<div class="dropdown-header bg-trans-gradient d-flex flex-row py-4 rounded-top">
+    <div class="d-flex flex-row align-items-center mt-1 mb-1 color-white">
+        <span class="mr-2">
+            <img src="~/img/AdminLTELogo.png" width="48" height="48" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                 style="opacity: .8">
+        </span>
+        <div class="info-card-text">
+            <div class="fs-lg text-truncate text-truncate-lg">@(CookieHelper.GetUser(Context).FullName)</div>
+            <span class="text-truncate text-truncate-md opacity-80">@(CookieHelper.GetUser(Context).Email)</span>
+        </div>
+    </div>
+</div>
+<div class="dropdown-divider m-0"></div>
+<a asp-controller="Home" asp-action="ProfileSettings" class="dropdown-item">
+    <span data-i18n="drpdwn.settings">Profil Ayarlari</span>
+</a>
+@*<div class="dropdown-divider m-0"></div>
+<a href="#" class="dropdown-item" data-action="app-fullscreen">
+    <span data-i18n="drpdwn.fullscreen">Tam ekran</span>
+    <i class="float-right text-muted fw-n">F11</i>
+</a>
+<a href="#" class="dropdown-item" data-action="app-print">
+    <span data-i18n="drpdwn.print">Print</span>
+    <i class="float-right text-muted fw-n">Ctrl + P</i>
+</a>*@
+<div class="dropdown-divider m-0"></div>
+<a class="dropdown-item fw-500 pt-3 pb-3" asp-controller="Login" asp-action="Logout">
+    <span data-i18n="drpdwn.page-logout">Çıkış</span>
+</a>

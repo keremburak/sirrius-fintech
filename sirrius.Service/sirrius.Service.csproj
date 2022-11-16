@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="MailKit" Version="3.2.0" />
+    <PackageReference Include="NLog" Version="4.7.15" />
+    <PackageReference Include="programmersdigest.MT940Parser" Version="0.5.16" />
+    <PackageReference Include="SharpMt940Lib.Core" Version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\sirrius.Core\sirrius.Core.csproj" />
+    <ProjectReference Include="..\sirrius.Data\sirrius.Data.csproj" />
+    <ProjectReference Include="..\sirrius.Model\sirrius.Model.csproj" />
+    <ProjectReference Include="..\Utilities\Utilities.csproj" />
+  </ItemGroup>
+
+</Project>
